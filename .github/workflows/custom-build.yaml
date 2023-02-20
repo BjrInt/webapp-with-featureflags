@@ -26,7 +26,9 @@ jobs:
         run: npm install
 
       - name: Build
-        run: ${github.event.inputs.feature_flags} npm run build
+        run: $FEATURE_FLAGS npm run build
+        env:
+          FEATURE FLAGS: ${{ github.event.inputs.feature_flags }}
 
       - uses: actions/upload-artifact@v3
         with:
