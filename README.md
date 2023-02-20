@@ -23,6 +23,8 @@ At the contrary, if no feature flags are provided the following assets will be o
 
 ## Running inside a Github action
 
-This repository also contains a Github action allowing for remote execution, so the build can be created on demand.
+This repository also contains [a Github action](./.github/workflows/custom-build.yaml) allowing for remote execution, so the build can be created on demand.
 
 The environment variable are piped at runtime in the action VM, but the results remain the same.
+
+![running the action](./screenshots/action.png)
