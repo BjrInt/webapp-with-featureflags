@@ -2,10 +2,14 @@ name: Custom build
 on:
   workflow_dispatch:
     inputs:
-      feature_flags:
-        description: "A string of feature flags to hand to the build script "
+      app_name:
+        description: "The name that will be displayed on your app"
         required: false
-        default: 'VITE_APP_NAME="My Awesome Project" VITE_ENABLE_PARAGRAPH="1"'
+        default: "My awesome app"
+      enable_paragraph:
+        description: "Show paragraph on home page"
+        required: false
+        default: "1"
 
 defaults:
   run:
@@ -27,10 +31,12 @@ jobs:
 
       - name: Build
         run: |
-          export $FEATURE_FLAGS 
+          export VITE_APP_NAME
+          export VITE_ENABLE_PARAGRAPH
           npm run build
         env:
-          FEATURE_FLAGS: ${{ github.event.inputs.feature_flags }}
+          VITE_APP_NAME: ${{ github.event.inputs.app_name }}
+          VITE_ENABLE_PARAGRAPH: ${{ github.event.inputs.enable_paragraph }}
 
       - uses: actions/upload-artifact@v3
         with:
