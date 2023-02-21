@@ -30,10 +30,7 @@ jobs:
         run: npm install
 
       - name: Build
-        run: |
-          export VITE_APP_NAME
-          export VITE_ENABLE_PARAGRAPH
-          npm run build
+        run: npm run build
         env:
           VITE_APP_NAME: ${{ github.event.inputs.app_name }}
           VITE_ENABLE_PARAGRAPH: ${{ github.event.inputs.enable_paragraph }}
